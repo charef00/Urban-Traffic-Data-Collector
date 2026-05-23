@@ -397,4 +397,19 @@ This software can be used for:
 
 # License
 
-This project is intended for research and educational purposes.
+This project is licensed under the MIT License.
+
+You are free to:
+
+- Use
+- Copy
+- Modify
+- Merge
+- Publish
+- Distribute
+- Sublicense
+- Sell copies of the software
+
+under the conditions specified in the LICENSE file.
+
+© 2026 Ayoub CHAREF
