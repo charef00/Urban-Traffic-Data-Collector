@@ -332,7 +332,65 @@ The application will:
 6. Repeat every configured interval
 
 ---
+# Application Interface
 
+The application provides a simple graphical interface for configuring and monitoring Waze traffic data collection.
+
+---
+
+## Home Interface
+
+The main page allows users to:
+
+- Start traffic data collection
+- Open and edit collection settings
+
+![Home Interface](images/home.png)
+
+---
+
+## Settings Interface
+
+The settings page allows users to configure:
+
+- Top coordinate
+- Bottom coordinate
+- Left coordinate
+- Right coordinate
+- Collection interval (minutes)
+
+These settings define the geographic bounding box used for Waze traffic collection.
+
+Example configuration for Marrakech:
+
+- Top: `31.695213052630276`
+- Bottom: `31.578935830814277`
+- Left: `-8.0548152923584`
+- Right: `-7.900938034057618`
+
+![Settings Interface](images/settings.png)
+
+---
+
+## Collection Interface
+
+Once data collection starts, the application automatically:
+
+- Fetches Waze traffic data
+- Stores alerts and jams into MySQL
+- Updates request statistics
+- Displays collection status
+
+The interface shows:
+
+- Current date
+- Day name
+- Collection interval
+- Number of requests completed
+- Last request time
+- Current system status
+
+![Collection Interface](images/collection.png)
 # Stored Data
 
 ## Alerts Table
