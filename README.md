@@ -58,7 +58,7 @@ project/
 ## 1. Clone the project
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY
+git clone https://github.com/charef00/Urban-Traffic-Data-Collector.git
 cd urban-traffic-data-collector
 ```
 
