@@ -368,7 +368,7 @@ Example configuration for Marrakech:
 - Left: `-8.0548152923584`
 - Right: `-7.900938034057618`
 
-![Settings Interface](images/settings.png)
+!(images/settings.png)
 
 ---
 
