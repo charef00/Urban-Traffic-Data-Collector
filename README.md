@@ -345,7 +345,7 @@ The main page allows users to:
 - Start traffic data collection
 - Open and edit collection settings
 
-![Home Interface](images/home.png)
+![Home Interface](./images/home.png)
 
 ---
 
@@ -368,7 +368,7 @@ Example configuration for Marrakech:
 - Left: `-8.0548152923584`
 - Right: `-7.900938034057618`
 
-!(images/settings.png)
+![Settings Interface](./images/settings.png)
 
 ---
 
@@ -390,7 +390,7 @@ The interface shows:
 - Last request time
 - Current system status
 
-![Collection Interface](images/collection.png)
+![Collection Interface](./images/collection.png)
 # Stored Data
 
 ## Alerts Table
