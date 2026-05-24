@@ -345,7 +345,7 @@ The main page allows users to:
 - Start traffic data collection
 - Open and edit collection settings
 
-![Home Interface](./images/home.png)
+<img src="images/home.png" width="700">
 
 ---
 
