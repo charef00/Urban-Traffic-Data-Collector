@@ -371,6 +371,9 @@ Example configuration for Marrakech:
 
 
 ---
+## Demo Video
+
+▶️ [Watch Demo on YouTube](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 ## Collection Interface
 
