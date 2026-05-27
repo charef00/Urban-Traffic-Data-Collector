@@ -345,7 +345,7 @@ The main page allows users to:
 - Start traffic data collection
 - Open and edit collection settings
 
-<img src="https://drive.google.com/file/d/1pZckVpe2GcO1idpWI4_7EfAHHIDVqdV6/view?usp=drive_link" width="700">
+<img src="https://drive.google.com/file/d/1pZckVpe2GcO1idpWI4_7EfAHHIDVqdV6" width="700">
 
 ---
 
