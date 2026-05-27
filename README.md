@@ -345,9 +345,7 @@ The main page allows users to:
 - Start traffic data collection
 - Open and edit collection settings
 
-<img src="https://secure-ecsd.elsevier.com/covers/80/Tango2/large/
-23527110
-.jpg" width="700">
+<img src="https://github.com/charef00/Urban-Traffic-Data-Collector/blob/main/images/home.png?raw=true" width="700">
 
 ---
 
