@@ -373,7 +373,7 @@ Example configuration for Marrakech:
 ---
 ## Demo Video
 
-▶️ [Watch Demo on YouTube](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+▶️ [Watch Demo on YouTube](https://youtu.be/Y06AGnXjFe8)
 
 ## Collection Interface
 
