@@ -52,7 +52,6 @@ HEADERS = {
     "Origin":         "https://www.waze.com",
     "Accept":         "application/json, text/plain, */*",
     "Accept-Language":"fr-FR,fr;q=0.9",
-    "Accept-Encoding":"gzip, deflate, br",
     "Connection":     "keep-alive",
     "Sec-Fetch-Dest": "empty",
     "Sec-Fetch-Mode": "cors",
@@ -177,7 +176,7 @@ def fetch(retry=True):
         session.get(
             "https://www.waze.com/live-map",
             headers=HEADERS,
-            timeout=15
+            timeout=(10, 60)
         )
 
         # Call API
@@ -185,7 +184,7 @@ def fetch(retry=True):
             URL,
             params=get_params(),
             headers=HEADERS,
-            timeout=15
+            timeout=(10, 60)
         )
 
         # Check forbidden error
