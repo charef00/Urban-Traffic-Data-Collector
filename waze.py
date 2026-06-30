@@ -187,7 +187,7 @@ def collect_waze_token():
             zoom_in = page.locator("a.leaflet-control-zoom-in")
             zoom_out = page.locator("a.leaflet-control-zoom-out")
 
-            for _ in range(2):
+            for _ in range(3):
                 zoom_in.click()
                 page.wait_for_timeout(1200)
 
