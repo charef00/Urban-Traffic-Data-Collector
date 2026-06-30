@@ -1,7 +1,7 @@
 import requests
 import json
 from datetime import datetime, timezone
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError
 import os
 import pandas as pd
 
@@ -97,12 +97,9 @@ def intercept_request(request):
         with open("token.txt", "w") as file:
             file.write(token)
 
-
+"""
 def collect_waze_token():
-    """
-        Open Waze and intercept requests
-        to get x-recaptcha-token.
-        """
+  
 
     try:
         with sync_playwright() as p:
@@ -112,6 +109,8 @@ def collect_waze_token():
                 )
 
             page = browser.new_page()
+            params_int=get_params();
+            url_init=f"https://www.waze.com/?top={params_int["top"]}&bottom={params_int["bottom"]}&left={params_int["left"]}&right={params_int["right"]}&env=row&types=alerts,traffic"
 
             # Listen to all requests
             page.on(
@@ -121,7 +120,7 @@ def collect_waze_token():
 
                 # Open Waze
             page.goto(
-                    "https://www.waze.com",
+                    url_init,
                     wait_until="networkidle"
                 )
 
@@ -135,7 +134,95 @@ def collect_waze_token():
     except Exception as e:
         print(f"Error: {e}")
         return False
-    
+"""
+def collect_waze_token():
+    """
+    Open Waze, interact with the map,
+    and intercept requests to get x-recaptcha-token.
+    """
+
+    try:
+        with sync_playwright() as p:
+
+            browser = p.chromium.launch(
+                headless=False
+            )
+
+            page = browser.new_page()
+
+            params_int = get_params()
+
+            url_init = (
+                f"https://www.waze.com/"
+                f"?top={params_int['top']}"
+                f"&bottom={params_int['bottom']}"
+                f"&left={params_int['left']}"
+                f"&right={params_int['right']}"
+                f"&env=row"
+                f"&types=alerts,traffic"
+            )
+
+            # Listen to all requests
+            page.on("request", intercept_request)
+
+            # Open Waze
+            page.goto(url_init, wait_until="networkidle")
+
+            # Wait a little for UI elements
+            page.wait_for_timeout(3000)
+
+            # Close "Got it" popup if present
+            try:
+                got_it = page.locator("button.waze-tour-tooltip__acknowledge")
+                if got_it.is_visible(timeout=5000):
+                    got_it.click()
+                    print("Clicked 'Got it'")
+            except Exception:
+                print("'Got it' popup not found.")
+
+            # Wait after closing popup
+            page.wait_for_timeout(1000)
+
+            # Zoom in/out a few times to generate requests
+            zoom_in = page.locator("a.leaflet-control-zoom-in")
+            zoom_out = page.locator("a.leaflet-control-zoom-out")
+
+            for _ in range(2):
+                zoom_in.click()
+                page.wait_for_timeout(1200)
+
+            for _ in range(2):
+                zoom_out.click()
+                page.wait_for_timeout(1200)
+
+            # Optional: drag the map slightly
+            map_canvas = page.locator(".leaflet-container")
+            if map_canvas.count() > 0:
+                box = map_canvas.bounding_box()
+                if box:
+                    page.mouse.move(
+                        box["x"] + box["width"] / 2,
+                        box["y"] + box["height"] / 2,
+                    )
+                    page.mouse.down()
+                    page.mouse.move(
+                        box["x"] + box["width"] / 2 + 150,
+                        box["y"] + box["height"] / 2,
+                        steps=20,
+                    )
+                    page.mouse.up()
+                    page.wait_for_timeout(2000)
+
+            # Wait for intercepted requests
+            page.wait_for_timeout(10000)
+
+            browser.close()
+
+            return True
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return False
 def ms_to_datetime(ms):
     """Convert milliseconds timestamp to readable datetime."""
     if not ms:
